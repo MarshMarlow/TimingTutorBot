@@ -13,6 +13,8 @@ const logUtils = require('./logger.js');
 const fileUtils = require('./file.js');
 const apiUtils = require('./api.js');
 
+const infpit = require('./infpit.js');
+
 //Settings
 const bot_settings = require("./botsettings.json");
 let api_settings = fileUtils.readSync('./apisettings.json');
@@ -147,6 +149,10 @@ bot.on("message", async message => {
 	//Storing message to use
 	let message_arr = message.content.split(" ");
 	let args = message_arr.slice(1);
+
+	//Test Commands
+	if(message.content == `${bot_settings.prefix}stats`)
+		message.channel.send(infpit.showStats());
 
 	//Reading stored message to see if it starts with the prefix for a command
 	let command_message = message_arr[0];
