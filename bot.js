@@ -155,6 +155,9 @@ bot.on("message", async message => {
 	//Check if the command exists, and run it if it does
 	let command_from_list = bot.commands.get(command_message.slice(bot_settings.prefix.length));
 	if(command_from_list) command_from_list.run(bot, message, args, connection_pool);
+
+	if(message.content == "hi")
+		message.channel.send("hello shmarlow");
 });
 
 bot.login(bot_settings.token);
